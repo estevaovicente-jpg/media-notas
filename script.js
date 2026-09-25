@@ -1,22 +1,30 @@
-function calcularMedia()
-const textoNota1 = document.getElementById("nota1").value;
-const textoNota2 = document.getElementById("nota2").value;
-const textoNota3 = document.getElementById("nota3").value;
+function calcularMedia(){
+    const textoNota1 = document.getElementById("nota1").value;
+    const textoNota2 = document.getElementById("nota2").value;
+    const textoNota3 = document.getElementById("nota3").value;
 
-const nota1 = Number(textoNota1);
-const nota2 = Number(textoNota2);
-const nota3 = Number(textoNota3);
+    if(textoNota1 === "" || textoNota2 === "" || textoNota3 === ""){
+        alert("Por favor, preencha todas as notas.");
+        return;
+    }
 
-const media = (nota1 + nota2 + nota3) / 3;
-let situacao;
+    const nota1 = Number(textoNota1);
+    const nota2 = Number(textoNota2);
+    const nota3 = Number(textoNota3);
 
-if (media >= 7) {
-    situacao = "Aprovado";
-} else if (media >= 5) {
-    situacao = "Recuperação";
-} else {
-    situacao = "Reprovado";
+    const media = (nota1 + nota2 + nota3) / 3;
+
+    let situacao;
+
+    if (media >= 7) {
+        situacao = "Aprovado";
+    } else if (media >= 5) {
+        situacao = "Recuperação";
+    } else {
+        situacao = "Reprovado";
+    }
+
+    const mediaFormatada = media.toFixed(1);
+   
+    document.getElementById("resultado").textContent = "Média: " +mediaFormatada + "- Situação: "+ situacao;
 }
-
-const mediaFormatada = media.toFixed(1);
-document.getElementById("resultado").innerHTML = `Média: ${mediaFormatada} - Situação: ${situacao}`;
